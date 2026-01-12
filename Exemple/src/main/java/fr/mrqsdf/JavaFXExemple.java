@@ -33,7 +33,6 @@ public class JavaFXExemple extends Application {
 
         MaterialInventory inventory = new MaterialInventory();
 
-        // (optionnel) inject des stocks de départ pour tester rapidement
         inventory.add(WATER, 20);
         inventory.add(LOG_OAK, 20);
         inventory.add(IRON_ORE, 20);
