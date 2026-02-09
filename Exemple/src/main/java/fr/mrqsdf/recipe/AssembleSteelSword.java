@@ -1,5 +1,6 @@
 package fr.mrqsdf.recipe;
 
+import fr.olympus.hephaestus.processing.DefaultProcessRecipe;
 import fr.olympus.hephaestus.processing.MaterialMatcher;
 import fr.olympus.hephaestus.processing.RecipeAnnotation;
 
@@ -12,7 +13,7 @@ import static fr.mrqsdf.utils.GroupsUtils.selectorGroupsMinLevel;
  * Recipe to assemble a steel sword from a steel blade and a wooden handle.
  */
 @RecipeAnnotation(id = "ex:recipe/assemble_steel_sword", factoryGroups = {GROUP_ANVIL}, minFactoryLevel = 2)
-public final class AssembleSteelSword extends SimpleProcessRecipe {
+public final class AssembleSteelSword extends DefaultProcessRecipe {
     /**
      * Constructor for AssembleSteelSword recipe.
      */

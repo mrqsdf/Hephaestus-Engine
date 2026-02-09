@@ -1,5 +1,6 @@
 package fr.mrqsdf.recipe;
 
+import fr.olympus.hephaestus.processing.DefaultProcessRecipe;
 import fr.olympus.hephaestus.processing.MaterialMatcher;
 import fr.olympus.hephaestus.processing.RecipeAnnotation;
 
@@ -12,7 +13,7 @@ import static fr.mrqsdf.utils.GroupsUtils.selectorGroupsMinLevel;
  * Recipe for forging a steel blade at an anvil.
  */
 @RecipeAnnotation(id = "ex:recipe/forge_steel_blade", factoryGroups = {GROUP_ANVIL}, minFactoryLevel = 2)
-public final class ForgeSteelBlade extends SimpleProcessRecipe {
+public final class ForgeSteelBlade extends DefaultProcessRecipe {
     public ForgeSteelBlade() {
         super(
                 "ex:recipe/forge_steel_blade",

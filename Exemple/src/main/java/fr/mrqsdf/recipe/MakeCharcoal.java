@@ -1,5 +1,6 @@
 package fr.mrqsdf.recipe;
 
+import fr.olympus.hephaestus.processing.DefaultProcessRecipe;
 import fr.olympus.hephaestus.processing.MaterialMatcher;
 import fr.olympus.hephaestus.processing.RecipeAnnotation;
 import fr.olympus.hephaestus.processing.TimeWindow;
@@ -13,7 +14,7 @@ import static fr.mrqsdf.utils.GroupsUtils.selectorGroups;
  * Recipe to make charcoal from oak logs.
  */
 @RecipeAnnotation(id = "ex:recipe/make_charcoal", factoryGroups = {GROUP_CHARCOAL})
-public final class MakeCharcoal extends SimpleProcessRecipe {
+public final class MakeCharcoal extends DefaultProcessRecipe {
     public MakeCharcoal() {
         super(
                 "ex:recipe/make_charcoal",

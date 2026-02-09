@@ -1,7 +1,6 @@
-package fr.mrqsdf.recipe;
+package fr.olympus.hephaestus.processing;
 
 import fr.olympus.hephaestus.materials.MaterialInstance;
-import fr.olympus.hephaestus.processing.*;
 import fr.olympus.hephaestus.register.RecipeSelector;
 import fr.olympus.hephaestus.resources.HephaestusData;
 
@@ -9,20 +8,22 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
+
 /**
- * A simple implementation of ProcessRecipe.
+ * A default implementation of ProcessRecipe with common logic.
  */
-public abstract class SimpleProcessRecipe implements ProcessRecipe {
+public abstract class DefaultProcessRecipe implements ProcessRecipe {
 
-    private final String id;
-    private final RecipeSelector selector;
-    private final boolean ordered;
+    protected final String id;
+    protected final RecipeSelector selector;
+    protected final boolean ordered;
 
-    private final List<MaterialMatcher> inputs;
-    private final List<MaterialMatcher> outputs;
-    private final List<Integer>  cost;
+    protected final List<MaterialMatcher> inputs;
+    protected final List<MaterialMatcher> outputs;
+    protected final List<Integer>  cost;
 
-    private final TimeWindow window;
+    protected final TimeWindow window;
+
 
     /** Constructor.
      *
@@ -33,7 +34,7 @@ public abstract class SimpleProcessRecipe implements ProcessRecipe {
      * @param outputs  Output material matchers.
      * @param window   Time window, or null for manual processes.
      */
-    protected SimpleProcessRecipe(String id,
+    protected DefaultProcessRecipe(String id,
                                   RecipeSelector selector,
                                   boolean ordered,
                                   List<MaterialMatcher> inputs,
@@ -48,7 +49,6 @@ public abstract class SimpleProcessRecipe implements ProcessRecipe {
         this.window = window;
     }
 
-    // ---- planning ----
 
     /**
      * Recipe identifier.
@@ -111,12 +111,6 @@ public abstract class SimpleProcessRecipe implements ProcessRecipe {
         return window;
     }
 
-    /**
-     * Checks whether the process can start with the given context.
-     * @param ctx Process context.
-     * @param data Hephaestus data.
-     * @return True if the process can start.
-     */
     @Override
     public boolean canStart(ProcessContext ctx, HephaestusData data) {
         // Démo: si tous les inputs sont présents (unordered)
@@ -147,7 +141,13 @@ public abstract class SimpleProcessRecipe implements ProcessRecipe {
         return !window.beforeMin(elapsedSeconds);
     }
 
-    /** Helpers */
+    /**
+     * Checks if the given material ID matches the given matcher.
+     * @param matcher Material matcher.
+     * @param materialId Material ID to check.
+     * @param data Hephaestus data for category lookups.
+     * @return True if the material ID matches the matcher, false otherwise.
+     */
     private boolean matches(MaterialMatcher matcher, String materialId, HephaestusData data) {
         return switch (matcher.getKind()) {
             case ANY -> true;

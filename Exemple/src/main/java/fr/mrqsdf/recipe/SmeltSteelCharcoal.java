@@ -1,5 +1,6 @@
 package fr.mrqsdf.recipe;
 
+import fr.olympus.hephaestus.processing.DefaultProcessRecipe;
 import fr.olympus.hephaestus.processing.MaterialMatcher;
 import fr.olympus.hephaestus.processing.RecipeAnnotation;
 import fr.olympus.hephaestus.processing.TimeWindow;
@@ -13,7 +14,7 @@ import static fr.mrqsdf.utils.GroupsUtils.selectorIds;
  * Recipe to smelt steel using iron ingot and charcoal in a blast furnace.
  */
 @RecipeAnnotation(id = "ex:recipe/smelt_steel_charcoal", factoryIds = {FURNACE_BLAST})
-public final class SmeltSteelCharcoal extends SimpleProcessRecipe {
+public final class SmeltSteelCharcoal extends DefaultProcessRecipe {
     public SmeltSteelCharcoal() {
         super(
                 "ex:recipe/smelt_steel_charcoal",
